@@ -23,6 +23,8 @@
 		<jettison.version>1.5.3</jettison.version>
 		<slf4j.version>2.0.6</slf4j.version>
 		<jackson.version>2.14.2</jackson.version>
+		<lombok.version>1.18.26</lombok.version>
+		<postgres.version>42.5.4</postgres.version>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
 		<maven.compiler.version>3.11.0</maven.compiler.version>
 	</properties>
@@ -105,6 +107,30 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Database -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-r2dbc -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-r2dbc</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<!-- PostgreSQL -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgres.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
@@ -128,6 +154,12 @@
 				<configuration>
 					<mainClass>by.piskunou.solvdlaba.MicroAirportLocationApplication</mainClass>
 					<layout>JAR</layout>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
 				</configuration>
 				<executions>
 					<execution>
