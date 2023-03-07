@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: micro-airport-location
+
+server:
+  port: 0
+
+eureka:
+  client:
+    service-host: localhost
+    service-url:
+      defaultZone: http://${eureka.client.service-host}:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
