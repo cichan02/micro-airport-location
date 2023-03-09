@@ -2,6 +2,21 @@ spring:
   application:
     name: micro-airport-location
 
+  r2dbc:
+    name:
+    url:
+    username:
+    password:
+
+  #Liquibase
+  liquibase:
+    enabled: true
+    change-log: classpath:db.changelog/db.changelog-master.yaml
+    driver-class-name: org.postgresql.Driver
+    url:
+    user: ${spring.r2dbc.username}
+    password: ${spring.r2dbc.password}
+
 server:
   port: 0
 

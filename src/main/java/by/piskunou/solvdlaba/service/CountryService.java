@@ -1,23 +1,23 @@
 package by.piskunou.solvdlaba.service;
 
 import by.piskunou.solvdlaba.domain.Country;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface CountryService {
 
-    List<Country> findAll();
+    Flux<Country> findAll();
 
-    Country findById(long id);
+    Mono<Country> findById(long id);
 
-    Country create(Country country);
+    Mono<Country> create(Country country);
 
-    Country updateById(long id, Country country);
+    Mono<Country> updateById(long id, Country country);
 
-    void removeById(long id);
+    Mono<Void> removeById(long id);
 
-    boolean isExists(long id);
+    Mono<Boolean> existsById(long id);
 
-    boolean isExists(Long id, String name);
+    Mono<Boolean> existsByName(String name);
 
 }

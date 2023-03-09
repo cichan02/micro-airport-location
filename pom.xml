@@ -25,6 +25,10 @@
 		<jackson.version>2.14.2</jackson.version>
 		<lombok.version>1.18.26</lombok.version>
 		<postgres.version>42.5.4</postgres.version>
+		<r2dbc.postgres.version>1.0.1.RELEASE</r2dbc.postgres.version>
+		<liquibase.version>4.19.1</liquibase.version>
+		<openapi.version>2.0.2</openapi.version>
+		<mapstruct.version>1.5.3.Final</mapstruct.version>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
 		<maven.compiler.version>3.11.0</maven.compiler.version>
 	</properties>
@@ -130,7 +134,49 @@
 			<version>${postgres.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.postgresql/r2dbc-postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>r2dbc-postgresql</artifactId>
+			<version>${r2dbc.postgres.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- Liquibase -->
+		<!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase.version}</version>
+		</dependency>
 
+		<!-- Documentation -->
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webflux-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+			<version>${openapi.version}</version>
+		</dependency>
+
+		<!-- Mapper -->
+		<!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
+
+		<!-- Validation -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
