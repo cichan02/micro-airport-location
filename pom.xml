@@ -29,6 +29,7 @@
 		<liquibase.version>4.19.1</liquibase.version>
 		<openapi.version>2.0.2</openapi.version>
 		<mapstruct.version>1.5.3.Final</mapstruct.version>
+		<jetbrains.version>24.0.1</jetbrains.version>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
 		<maven.compiler.version>3.11.0</maven.compiler.version>
 	</properties>
@@ -177,6 +178,15 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 			<version>${spring-boot.version}</version>
 		</dependency>
+
+		<!-- Additional -->
+		<!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>${jetbrains.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>

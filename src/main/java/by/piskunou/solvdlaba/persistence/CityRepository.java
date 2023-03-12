@@ -4,27 +4,24 @@ import by.piskunou.solvdlaba.domain.City;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-import java.util.Optional;
-
 public interface CityRepository {
 
     Flux<City> findAll();
 
     Mono<City> findById(long id);
 
-    Mono<City> findByIdWithAirports(long id);
+    Mono<City> findByIdWithAirport(long id);
 
     Flux<City> search(String inquiry);
 
-    void create(long countryId, City city);
+    Mono<City> create(long countryId, City city);
 
-    void update(long countryId, City city);
+    Mono<City> update(long countryId, City city);
 
-    void removeById(long id);
+    Mono<Void> removeById(long id);
 
     Mono<Boolean> isExistsById(long id);
 
-    Mono<Boolean> isExistsByName(Long id, String name);
+    Mono<Boolean> isExistsByName(String name, long id);
 
 }

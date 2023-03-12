@@ -1,6 +1,8 @@
 package by.piskunou.solvdlaba.domain;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.List;
 
@@ -9,8 +11,10 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "cities")
 public class City {
 
+    @Id
     private Long id;
     private String name;
     private Country country;

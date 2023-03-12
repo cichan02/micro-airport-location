@@ -1,13 +1,21 @@
 package by.piskunou.solvdlaba.persistence;
 
 import by.piskunou.solvdlaba.domain.Country;
-import org.springframework.data.r2dbc.repository.R2dbcRepository;
-import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Repository
-public interface CountryRepository extends R2dbcRepository<Country, Long> {
+public interface CountryRepository {
 
-    Mono<Boolean> existsByName(String name);
+    Flux<Country> findAll();
+
+    Mono<Country> findById(long id);
+
+    Mono<? extends Country> save(Country country);
+
+    Mono<Void> removeById(long id);
+
+    Mono<Boolean> isExistsById(long id);
+
+    Mono<Boolean> isExistsByName(String name, long id);
 
 }

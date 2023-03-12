@@ -1,5 +1,6 @@
 package by.piskunou.solvdlaba.web.controller;
 
+import by.piskunou.solvdlaba.domain.exception.ResourceAlreadyExistsException;
 import by.piskunou.solvdlaba.domain.exception.ResourceNotExistsException;
 import by.piskunou.solvdlaba.web.dto.ErrorResponseDTO;
 import org.springframework.http.HttpStatus;
@@ -21,10 +22,16 @@ public class AdviceController {
         return new ErrorResponseDTO(e.getMessage());
     }
 
+    @ExceptionHandler(ResourceAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponseDTO handleBadRequestException(Exception e) {
+        return new ErrorResponseDTO(e.getMessage());
+    }
+
     @ExceptionHandler(WebExchangeBindException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public List<ErrorResponseDTO> handleBadRequestException(WebExchangeBindException e) {
-        List<ErrorResponseDTO> responses = new ArrayList<ErrorResponseDTO>();
+        List<ErrorResponseDTO> responses = new ArrayList<>();
         responses.addAll(e.getGlobalErrors()
                 .stream()
                 .map(globalError -> new ErrorResponseDTO(globalError.getObjectName(), globalError.getDefaultMessage()))

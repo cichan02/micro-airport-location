@@ -1,25 +1,25 @@
 package by.piskunou.solvdlaba.service;
 
 import by.piskunou.solvdlaba.domain.City;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface CityService {
 
-    List<City> findAll();
+    Flux<City> findAll();
 
-    City findById(long id, boolean withAirports);
+    Mono<City> findById(long id, boolean withAirports);
 
-    List<City> search(String inquiry);
+    Flux<City> search(String inquiry);
 
-    City create(long countryId, City city);
+    Mono<City> create(long countryId, City city);
 
-    City updateById(long id, long countryId, City city);
+    Mono<City> updateById(long id, long countryId, City city);
 
-    void removeById(long id);
+    Mono<Void> removeById(long id);
 
-    boolean isExists(long id);
+    Mono<Boolean> isExistsById(long id);
 
-    boolean isExists(Long id, String name);
+    Mono<Boolean> isExistsByName(String name, Long id);
 
 }

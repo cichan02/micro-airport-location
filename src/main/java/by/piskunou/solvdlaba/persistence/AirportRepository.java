@@ -10,20 +10,22 @@ public interface AirportRepository {
 
     Mono<Airport> findById(long id);
 
-    Flux<Airport> search(Airport airport);
+    Flux<Airport> search(String inquiry);
 
-    void create(long cityId, Airport airport);
+    Mono<Airport> create(long cityId, Airport airport);
 
-    void update(long cityId, Airport airport);
+    Mono<Airport> update(long cityId, Airport airport);
 
-    void removeById(long id);
+    Mono<Void> removeById(long id);
 
     Mono<Boolean> isExistsById(long id);
 
-    Mono<Boolean> isExistsByName(Long id, String name);
+    Mono<Boolean> isExistsByName(String name, long id);
 
-    Mono<Boolean> isExistsByIata(Long id, String iata);
+    Mono<Boolean> isExistsByIata(String iata, long id);
 
-    Mono<Boolean> isExistsByIcao(Long id, String icao);
+    Mono<Boolean> isExistsByIcao(String icao, long id);
 
 }
+
+

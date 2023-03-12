@@ -18,6 +18,6 @@ public interface CountryService {
 
     Mono<Boolean> existsById(long id);
 
-    Mono<Boolean> existsByName(String name);
+    Mono<Boolean> isExistsByName(String name, Long id);
 
 }

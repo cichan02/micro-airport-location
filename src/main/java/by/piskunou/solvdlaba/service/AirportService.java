@@ -1,29 +1,29 @@
 package by.piskunou.solvdlaba.service;
 
 import by.piskunou.solvdlaba.domain.Airport;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface AirportService {
 
-    List<Airport> findAll();
+    Flux<Airport> findAll();
 
-    Airport findById(long id);
+    Mono<Airport> findById(long id);
 
-    List<Airport> search(Airport airport);
+    Flux<Airport> search(String inquiry);
 
-    Airport create(long cityId, Airport airport);
+    Mono<Airport> create(long cityId, Airport airport);
 
-    Airport updateById(long id, long cityId, Airport airport);
+    Mono<Airport> updateById(long id, long cityId, Airport airport);
 
-    void removeById(long id);
+    Mono<Void> removeById(long id);
 
-    boolean isExists(long id);
+    Mono<Boolean> isExists(long id);
 
-    boolean isExistsByName(Long id, String name);
+    Mono<Boolean> isExistsByName(String name, Long id);
 
-    boolean isExistsByIata(Long id, String iata);
+    Mono<Boolean> isExistsByIata(String iata, Long id);
 
-    boolean isExistsByIcao(Long id, String icao);
+    Mono<Boolean> isExistsByIcao(String icao, Long id);
 
 }
