@@ -14,18 +14,18 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class AirportRepositoryImpl implements AirportRepository {
 
-    private final R2dbcAirportRepository r2dbcRepository;
+    private final R2dbcAirportRepository repository;
     private final DatabaseClient db;
     private final AirportMapper mapper;
 
     @Override
     public Flux<Airport> findAll() {
-        return r2dbcRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public Mono<Airport> findById(long id) {
-        return r2dbcRepository.findById(id);
+        return repository.findById(id);
     }
 
     @Override
@@ -81,27 +81,27 @@ public class AirportRepositoryImpl implements AirportRepository {
 
     @Override
     public Mono<Void> removeById(long id) {
-        return r2dbcRepository.deleteById(id);
+        return repository.deleteById(id);
     }
 
     @Override
     public Mono<Boolean> isExistsById(long id) {
-        return r2dbcRepository.existsById(id);
+        return repository.existsById(id);
     }
 
     @Override
     public Mono<Boolean> isExistsByName(String name, long id) {
-        return r2dbcRepository.existsByNameAndIdNot(name, id);
+        return repository.existsByNameAndIdNot(name, id);
     }
 
     @Override
     public Mono<Boolean> isExistsByIata(String iata, long id) {
-        return r2dbcRepository.existsByIataAndIdNot(iata, id);
+        return repository.existsByIataAndIdNot(iata, id);
     }
 
     @Override
     public Mono<Boolean> isExistsByIcao(String icao, long id) {
-        return r2dbcRepository.existsByIcaoAndIdNot(icao, id);
+        return repository.existsByIcaoAndIdNot(icao, id);
     }
 
 }

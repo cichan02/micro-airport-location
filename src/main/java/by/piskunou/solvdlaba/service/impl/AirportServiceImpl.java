@@ -104,19 +104,28 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public Mono<Boolean> isExistsByName(String name, Long id) {
-        long legalId = id == null ? 0 : id;
+        long legalId = 0;
+        if(id != null) {
+            legalId = id;
+        }
         return repository.isExistsByName(name, legalId);
     }
 
     @Override
     public Mono<Boolean> isExistsByIata(String iata, Long id) {
-        long legalId = id == null ? 0 : id;
+        long legalId = 0;
+        if(id != null) {
+            legalId = id;
+        }
         return repository.isExistsByIata(iata, legalId);
     }
 
     @Override
     public Mono<Boolean> isExistsByIcao(String icao, Long id) {
-        long legalId = id == null ? 0 : id;
+        long legalId = 0;
+        if(id != null) {
+            legalId = id;
+        }
         return repository.isExistsByIcao(icao, legalId);
     }
 

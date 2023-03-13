@@ -12,36 +12,36 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class CountryRepositoryImpl implements CountryRepository {
 
-    private final R2dbcCountryRepository r2dbcRepository;
+    private final R2dbcCountryRepository repository;
 
     @Override
     public Flux<Country> findAll() {
-        return r2dbcRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public Mono<Country> findById(long id) {
-        return r2dbcRepository.findById(id);
+        return repository.findById(id);
     }
 
     @Override
     public Mono<Country> save(Country country) {
-        return r2dbcRepository.save(country);
+        return repository.save(country);
     }
 
     @Override
     public Mono<Void> removeById(long id) {
-        return r2dbcRepository.deleteById(id);
+        return repository.deleteById(id);
     }
 
     @Override
     public Mono<Boolean> isExistsById(long id) {
-        return r2dbcRepository.existsById(id);
+        return repository.existsById(id);
     }
 
     @Override
     public Mono<Boolean> isExistsByName(String name, long id) {
-        return r2dbcRepository.existsByNameAndIdNot(name, id);
+        return repository.existsByNameAndIdNot(name, id);
     }
 
 }

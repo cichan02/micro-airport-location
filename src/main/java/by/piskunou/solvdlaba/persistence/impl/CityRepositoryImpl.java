@@ -14,13 +14,13 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class CityRepositoryImpl implements CityRepository {
 
-    private final R2dbcCityRepository r2dbcRepository;
+    private final R2dbcCityRepository repository;
     private final DatabaseClient db;
     private final CityMapper mapper;
 
     @Override
     public Flux<City> findAll() {
-        return r2dbcRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
@@ -122,17 +122,17 @@ public class CityRepositoryImpl implements CityRepository {
 
     @Override
     public Mono<Void> removeById(long id) {
-        return r2dbcRepository.deleteById(id);
+        return repository.deleteById(id);
     }
 
     @Override
     public Mono<Boolean> isExistsById(long id) {
-        return r2dbcRepository.existsById(id);
+        return repository.existsById(id);
     }
 
     @Override
     public Mono<Boolean> isExistsByName(String name, long id) {
-        return r2dbcRepository.existsByNameAndIdNot(name, id);
+        return repository.existsByNameAndIdNot(name, id);
     }
 
 }

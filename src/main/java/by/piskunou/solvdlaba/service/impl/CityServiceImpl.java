@@ -83,7 +83,10 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public Mono<Boolean> isExistsByName(String name, Long id) {
-        long legalId = id == null ? 0 : id;
+        long legalId = 0;
+        if(id != null) {
+            legalId = id;
+        }
         return repository.isExistsByName(name, legalId);
     }
 
