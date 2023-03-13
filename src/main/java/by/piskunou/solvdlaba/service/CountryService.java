@@ -16,7 +16,7 @@ public interface CountryService {
 
     Mono<Void> removeById(long id);
 
-    Mono<Boolean> existsById(long id);
+    Mono<Boolean> isExists(long id);
 
     Mono<Boolean> isExistsByName(String name, Long id);
 

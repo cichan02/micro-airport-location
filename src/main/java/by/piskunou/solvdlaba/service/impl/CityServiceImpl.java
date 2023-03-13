@@ -35,7 +35,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public Mono<City> create(long countryId, City city) {
-        return countryService.existsById(countryId)
+        return countryService.isExists(countryId)
                 .flatMap(existsCountry -> {
                     if (!existsCountry) {
                         return Mono.error(new ResourceNotExistsException("There's no country with such id"));
@@ -57,7 +57,7 @@ public class CityServiceImpl implements CityService {
                         return Mono.error(new ResourceNotExistsException("There's no city with such id"));
                     }
                     city.setId(id);
-                    return countryService.existsById(countryId);
+                    return countryService.isExists(countryId);
                 }).flatMap(existsCountry -> {
                     if (!existsCountry) {
                         return Mono.error(new ResourceNotExistsException("There's no country with such id"));

@@ -39,7 +39,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Mono<Country> updateById(long id, Country country) {
-        return existsById(id)
+        return isExists(id)
                 .flatMap(exists -> {
                     if(!exists) {
                         return Mono.error(new ResourceNotExistsException("There's no country with such id"));
@@ -55,7 +55,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Mono<Boolean> existsById(long id) {
+    public Mono<Boolean> isExists(long id) {
         return repository.isExistsById(id);
     }
 

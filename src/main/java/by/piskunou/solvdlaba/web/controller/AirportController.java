@@ -54,6 +54,13 @@ public class AirportController {
         return service.search(inquiry).map(mapper::toDTO);
     }
 
+    @GetMapping("/exists/{id}")
+    @Operation(summary = "Check if an airport exists")
+    @Parameter(name = "id", description = "The airport's unique identification number")
+    public Mono<Boolean> existsById(@PathVariable long id) {
+        return service.isExists(id);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create airport")

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,6 +43,13 @@ public class CountryController {
     @Parameter(name = "id", description = "Country's unique identification number")
     public Mono<CountryDTO> findById(@PathVariable long id) {
         return service.findById(id).map(mapper::toDTO);
+    }
+
+    @GetMapping("/exists/{id}")
+    @Operation(summary = "Check if a country exists")
+    @Parameter(name = "id", description = "Country's unique identification number")
+    public Mono<Boolean> existsById(@PathVariable long id) {
+        return service.isExists(id);
     }
 
     @PostMapping
