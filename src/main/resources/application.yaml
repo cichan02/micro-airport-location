@@ -1,6 +1,8 @@
 spring:
   application:
     name: micro-airport-location
+  config:
+    import: optional:.env[.properties]
 
   r2dbc:
     name: ${R2DBC_NAME}
@@ -22,7 +24,7 @@ server:
 
 eureka:
   client:
-    service-host: ${SERVER_HOST}
+    service-host: ${MAIN_HOST}
     service-url:
       defaultZone: http://${eureka.client.service-host}:8761/eureka
   instance:
