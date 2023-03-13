@@ -14,6 +14,8 @@ spring:
     change-log: classpath:db.changelog/db.changelog-master.yaml
     driver-class-name: org.postgresql.Driver
     url:
+    user:
+    password:
 
 server:
   port: 0
