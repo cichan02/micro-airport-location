@@ -12,7 +12,6 @@ import org.springframework.web.bind.support.WebExchangeBindException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @RestControllerAdvice
 public class AdviceController {
 
