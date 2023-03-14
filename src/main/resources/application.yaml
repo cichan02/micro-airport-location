@@ -1,13 +1,30 @@
 spring:
   application:
     name: micro-airport-location
+  config:
+    import: optional:.env[.properties]
+
+  r2dbc:
+    name: ${R2DBC_NAME}
+    url: ${R2DBC_URL}
+    username: ${R2DBC_USERNAME}
+    password: ${R2DBC_PASSWORD}
+
+  #Liquibase
+  liquibase:
+    enabled: true
+    change-log: classpath:db.changelog/db.changelog-master.yaml
+    driver-class-name: org.postgresql.Driver
+    url: ${LIQUIBASE_URL}
+    user: ${LIQUIBASE_USER}
+    password: ${LIQUIBASE_PASSWORD}
 
 server:
   port: 0
 
 eureka:
   client:
-    service-host: localhost
+    service-host: ${MAIN_HOST}
     service-url:
       defaultZone: http://${eureka.client.service-host}:8761/eureka
   instance:
